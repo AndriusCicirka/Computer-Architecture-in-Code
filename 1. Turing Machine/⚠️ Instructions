@@ -11,7 +11,7 @@
                 argument at all, default cycle number is set to 2500.
                 (this function is a placeholder for a function, that
                 kills the machine with keyboard input, if, for example
-                machine enters an endless loop),
+                machine enters an endless loop ⚠️),
                 
     Argument 3: if the argument is anything but '0', machine will work
                 in slow mode of 250ms per action. (this function is 
