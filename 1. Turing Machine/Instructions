@@ -1,0 +1,49 @@
+⚪ Using the Turing Machine simulator:
+
+ ⚪ Code launches through the command line, which in total
+    takes 3 separate arguments:
+    
+    Argument 1: input file name with .txt prefix on the end.
+                (see further for how to create a custom input file);
+    
+    Argument 2: number of cycles before program promt if to continue
+                or kill the machine. If the arg is '0' or there is no
+                argument at all, default cycle number is set to 2500.
+                (this function is a placeholder for a function, that
+                kills the machine with keyboard input, if, for example
+                machine enters an endless loop),
+                
+    Argument 3: if the argument is anything but '0', machine will work
+                in slow mode of 250ms per action. (this function is 
+                made to see easier how the machine performs actions,
+                which are visualized on the console).
+                
+⚪ Understanding the input file:
+
+ ⚪ First line: machine 'tape' containing of numbers and/or letters
+ ⚪ Line afterwards: initial position of the 'tape head' (counting from
+     left to right)
+ ⚪ Instruction tape (5 elements per line, unlimited line count):
+     
+     First element: indicates to which machine state further commands
+                    apply to;
+                    
+     Second element: indicates to which symbol further commands apply to;
+     
+     (If previous instructions are true, then commands below are performed)
+     Third element: indicates to which symbol current symbol should be
+                    over-written to;
+      
+     Fourth element: indicates to which direction (left or right) should
+                     the machine 'tape head' move before performing another
+                     cycle,
+                     
+     Fifth element: indicates to which machine state current state should
+                    be over-written to.
+
+ 💭 There are four input files provided with the code. They are fully working
+     and return different outputs. Any of those can be used to refer to the
+     input file instructions above.
+     
+⚠️ These instructions do not fully explain how the Turing machine works,
+    rather the operation of simulator only.             
