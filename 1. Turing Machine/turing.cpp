@@ -71,7 +71,7 @@ int main(int argc, char* argv[4] = {0})
             if(currentState == program.at(i).currentState && tape.at(headPosition - 1) == program.at(i).currentSymbol)
             {   //Element 1
                 tape.at(headPosition - 1) = program.at(i).newSymbol; //Element 2
-                if(program.at(i).direction == 'L') headPosition--; //Moving the tape head
+                if(program.at(i).direction == 'L') headPosition--; //Moving the 'tape head'
                     else if(program.at(i).direction == 'R') headPosition++;
                         else{
                             cout << "\n\nError in adressing a new direction!";
