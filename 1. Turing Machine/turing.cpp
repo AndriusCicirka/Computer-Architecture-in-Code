@@ -56,10 +56,10 @@ int main(int argc, char* argv[4] = {0})
     string currentState = "0";
 
     while(true){
-        for(int i = 0; i < tape.size(); i++) //Atspausdinama simbolių juosta ekrane
+        for(int i = 0; i < tape.size(); i++) //Printing the machine 'tape'
             cout << tape.at(i);
 
-        cout << setw(headPosition) << "^"; //Atspausdinama rodyklė, nurodanti kur stovi nuskaitymo galvutė
+        cout << setw(headPosition) << "^"; //Printing the 'tape head'
         
         if(headPosition == tape.size()|| headPosition < 0){
             cout << "\nThe edge of the tape has been reached!";
@@ -67,19 +67,19 @@ int main(int argc, char* argv[4] = {0})
         }
 
         int loop = 1;
-        for(int i = 0; i < a; i++){//for ciklas, einantis per visą programos juostos ilgį
+        for(int i = 0; i < a; i++){//Scanning through the whole tape
             if(currentState == program.at(i).currentState && tape.at(headPosition - 1) == program.at(i).currentSymbol)
-            {   //Jeigu dabartinė būsena sutampa su programos juostos esama būsena bei simboliu, tai:
-                tape.at(headPosition - 1) = program.at(i).newSymbol; //Priskiriamas naujas(arba tas pats) simbolis
-                if(program.at(i).direction == 'L') headPosition--; //Nuskaitymo galvutė pajudinama pagal programos nurodytą kryptį
+            {   //Element 1
+                tape.at(headPosition - 1) = program.at(i).newSymbol; //Element 2
+                if(program.at(i).direction == 'L') headPosition--; //Moving the tape head
                     else if(program.at(i).direction == 'R') headPosition++;
                         else{
                             cout << "\n\nError in adressing a new direction!";
                             break;
                         } 
 
-                currentState = program.at(i).newState; //Nustatoma nauja programos būsena - jeigu sutampa su praeita, niekas nepakinta
-                i = a; //Baigiamas for ciklas;
+                currentState = program.at(i).newState; //Setting a new machine state
+                i = a; //Finishing the scan;
                 loop = 0;
             }              
         }
