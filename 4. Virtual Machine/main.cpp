@@ -6,27 +6,26 @@ using namespace std;
 
 int main()
 {
-    int C, byteConst;
-    unsigned char regs[16];
-    char prog_mem[256], symb;
-    bool flag_EOF = false, flag_zero = false, running = true;
+    int C, byteConst;                                            // Instruction variables one and two
+    unsigned char regs[16];                                      // Registries
+    char prog_mem[256], symb;                                    // Program memory and symbol variable
+    bool flag_EOF = false, flag_zero = false, running = true;    // Two flag registries, boolean value for while loop
 
-
-    ifstream readBinary("decryptor.bin", ios::in | ios::binary);
-    readBinary.read(&prog_mem[0], 256);
-    readBinary.close();
+    ifstream readBinary("decryptor.bin", ios::in | ios::binary); // Preloading program memory with instructions
+    readBinary.read(&prog_mem[0], 256);                          //
+    readBinary.close();                                          //
 
     ifstream readEncrypted("q1_encr.txt");
     ofstream write("result.txt");
 
     while (running)
     {
-        for (int i = 0; i < 255; i += 2)
-        {
-            C = prog_mem[i];
-            byteConst = prog_mem[i + 1];
-
-            switch (C)
+        for (int i = 0; i < 255; i += 2)                         // Program memory iterator
+        {                                                        //
+            C = prog_mem[i];                                     // Reading first hex value of relative instruction
+            byteConst = prog_mem[i + 1];                         // Reading second hex value of relative instruction
+                                                                 //
+            switch (C)                                           // Command registry, supporting 17 different instructions
             {
             case 1:// INC
                 regs[byteConst] = (regs[byteConst & 0x0F]) + 1;
