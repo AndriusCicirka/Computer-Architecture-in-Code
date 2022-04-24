@@ -1,0 +1,30 @@
+⚪ Using the Virtual Machine:
+
+ ⚪ Machine's specifications:
+    
+    Registries: 16 general-use registries, 8-bit wide each;
+    
+    Instructions: Virtual Machine reads 8-bits of instructions per cycle from a
+                  binary file with two hexadecimal values per single instruction;
+                
+    Memory: 256 bytes of program memory,
+    Flags: 2 flag registries (zero and EOF).
+                
+⚪ What this Virtual Machine does:
+
+ ⚪ First step: Machine preloads the program memory with working instructions,
+                 which are stored in "decryptor.bin" file;
+ ⚪ Second step: Machine iterates through the program's memory and does various
+                  tasks, like adding two registries together, jumping the
+                  iterator variable and so on...
+ ⚪ Third step: once the Machine finishes reading the encrypted text file, it
+                 raises the EOF flag and stops working. Decrypted text can be
+                 found in "results.txt" file.
+                 
+
+ 💭 There is one encrypted file and it's decrypted variant provided with the
+     code. 
+     
+⚠️ These instructions are not in-depth and do not explain Virtual Machine's
+    working principle fully. Might add in-depth instructions with visual
+    examples in the future.
