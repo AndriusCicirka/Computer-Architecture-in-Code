@@ -29,12 +29,14 @@ int main()
             {
             case 1:// INC
                 regs[byteConst] = (regs[byteConst & 0x0F]) + 1;
-                if (regs[byteConst] == 0) flag_zero = true;
+                if (regs[byteConst & 0x0F] == 0) flag_zero = true;
+                    else flag_zero = false;
                 break;
 
             case 2:// DEC
                 regs[byteConst] = (regs[byteConst & 0x0F]) - 1;
-                if (regs[byteConst] == 0) flag_zero = true;
+                if (regs[byteConst & 0x0F] == 0) flag_zero = true;
+                    else flag_zero = false;
                 break;
 
             case 3:// MOV
@@ -58,8 +60,11 @@ int main()
                 break;
 
             case 8:// JZ
-                if (flag_zero == true)
-                    i += byteConst, i -= 2;
+                if (flag_zero == true){
+                    i += byteConst; 
+                    i -= 2;
+                    flag_zero = false;
+                }         
                 break;
 
             case 9:// JNZ
@@ -81,21 +86,25 @@ int main()
             case 12:// ADD
                 regs[byteConst & 0x0F] = regs[byteConst & 0x0F] + (regs[(byteConst & 0xF0) >> 4]);
                 if (regs[byteConst & 0x0F] == 0) flag_zero = true;
+                    else flag_zero = false;
                 break;
 
             case 13:// SUB
                 regs[byteConst & 0x0F] = regs[byteConst & 0x0F] - (regs[(byteConst & 0xF0) >> 4]);
                 if (regs[byteConst & 0x0F] == 0) flag_zero = true;
+                    else flag_zero = false;
                 break;
 
             case 14:// XOR
                 regs[byteConst & 0x0F] = regs[byteConst & 0x0F] ^ (regs[(byteConst & 0xF0) >> 4]);
                 if (regs[byteConst & 0x0F] == 0) flag_zero = true;
+                    else flag_zero = false;
                 break;
 
             case 15:// OR
                 regs[byteConst & 0x0F] = regs[byteConst & 0x0F] | (regs[(byteConst & 0xF0) >> 4]);
                 if (regs[byteConst & 0x0F] == 0) flag_zero = true;
+                    else flag_zero = false;
                 break;
 
             case 16:// IN
